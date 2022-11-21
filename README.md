@@ -1,2 +1,5 @@
-# leetcode-Solutions
-This repo contains solutions to leetcode problems
+
+# Leetcode Solutions
+
+This repository will be containing solutions to Leetcode Problems (majorly DSA based questions).
+
