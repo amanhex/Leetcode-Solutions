@@ -32,12 +32,12 @@ public:
         while (j < s2.size()){
             frequencyS2[s2[j] - 'a']++; // storing frequency of characters of s2
             if (j - i + 1 == s1.size()) // checking if size of window is equal to the length of s1
-                if (frequencyS1 == frequencyS2) // checking if frequency of characters in window and s1 are same
+                if (frequencyS1 == frequencyS2) // checking if frequency of characters in window and frequency of characters of s1 are same
                     return true;
             if (j - i + 1 < s1.size()) // if size is small increasing the range of window
                 j++;
             else{
-                frequencyS2[s2[i] - 'a']--; // decreasing size of window
+                frequencyS2[s2[i] - 'a']--; // decreasing size of window when size of window is greater than the length of s1
                 i++;
                 j++;
             }
