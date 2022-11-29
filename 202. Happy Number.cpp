@@ -43,3 +43,28 @@ public:
         return isHappy(sum);
     }
 };
+
+// making a different function to find sum of digits and using fast and slow variable to check 
+// whether the number is happy (Floyd Cycle detection algorithm).
+class Solution {
+public:
+    int addSquaresOfDigits(int n){
+        int sum = 0;
+        while (n != 0){
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        return sum;
+    }
+    bool isHappy(int n) {
+        int slow = n, fast = n;
+        do{
+            slow = addSquaresOfDigits(slow);
+            fast = addSquaresOfDigits(fast);
+            fast = addSquaresOfDigits(fast);
+            if (fast == 1) return true;
+        } while (slow != fast);
+        return false;
+    }
+};
