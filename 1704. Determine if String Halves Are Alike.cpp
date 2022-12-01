@@ -56,3 +56,25 @@ public:
         return false;
     }
 };
+
+// Without HashMap (Best Approach)
+
+class Solution {
+public:
+    int vowelCounter(string& s, int start, int end){
+        int ans = 0;
+        for (int i = start; i < end; i++){
+            if (s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' || s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U')
+                ans++;
+        }
+            return ans;
+    }
+    bool halvesAreAlike(string s) {
+        int size = s.size();
+        int firstHalfAnswer = vowelCounter(s, 0, size / 2);
+        int secondHalfAnswer = vowelCounter(s, size / 2, size);
+        if (firstHalfAnswer == secondHalfAnswer)
+            return true;
+        return false;
+    }
+};
