@@ -50,3 +50,18 @@ public:
         return temp;
     }
 };
+
+// Recursive Approach
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head -> next == nullptr)
+            return head;
+        ListNode* imp = head -> next;
+        ListNode* temp = reverseList(head -> next);
+        imp -> next = head;
+        head -> next = nullptr;
+        return temp;
+    }
+};
