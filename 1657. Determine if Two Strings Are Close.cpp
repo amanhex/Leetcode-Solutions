@@ -42,8 +42,8 @@ public:
         unordered_map<char, int> w1, w2;
         vector<int> f1(26, 0), f2(26, 0);
         for (auto i : word1){
-            f1[i - 'a']++;
-            w1[i] = 0;
+            f1[i - 'a']++;                  // storing frequency of each character in an array
+            w1[i] = 0;                      // using hashmap to store characters as keys
         }
         for (auto i : word2){
             f2[i - 'a']++;
@@ -51,7 +51,7 @@ public:
         }
         sort(f1.begin(), f1.end());
         sort(f2.begin(), f2.end());
-        for (auto i : w1){
+        for (auto i : w1){                  // manual comparision of hashmaps takes less time than using == operator
             if (w2.count(i.first) > 0)
                 continue;
             else
