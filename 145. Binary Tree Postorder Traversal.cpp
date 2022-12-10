@@ -46,3 +46,33 @@ public:
         return result;
     }
 };
+
+// Iterative Approach (Using Two Stacks)
+
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> result;
+        if (root == nullptr)
+            return result;
+        stack<TreeNode*> s;
+        s.push(root);
+        stack<int> out;
+        while (!s.empty())
+        {
+            TreeNode* curr = s.top();
+            s.pop();
+            out.push(curr -> val);
+            if (curr -> left)
+                s.push(curr -> left);
+            if (curr -> right)
+                s.push(curr -> right);
+        }
+        while (!out.empty())
+        {
+            result.push_back(out.top());
+            out.pop();
+        }
+        return result;
+    }
+};
