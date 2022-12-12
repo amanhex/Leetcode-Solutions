@@ -35,3 +35,25 @@ public:
         return 1 + max(maxDepth(root -> left), maxDepth(root -> right));
     }
 };
+
+// Elaborate Solution
+
+class Solution {
+public:
+    void depth1(TreeNode* root, int& depth, int max){
+        if (!root)
+            return;
+        if (depth < max)
+            depth = max;
+        depth1(root -> left, depth, max + 1);
+        depth1(root -> right, depth, max + 1);
+    }
+
+    int maxDepth(TreeNode* root) {
+        if (!root)
+            return 0;
+        int depth = 1, max = 1;
+        depth1(root, depth, max);
+        return depth;
+    }
+};
