@@ -21,6 +21,24 @@ Constraints:
 1 <= n <= 45
 */
 
+// Best Solution
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n == 1)
+            return 1;
+        int firstStep = 1;
+        int secondStep = 2;
+        for (int i = 2; i < n; ++i){
+            int temp = firstStep;
+            firstStep = secondStep;
+            secondStep = firstStep + temp;
+        }
+        return secondStep;
+    }
+};
+
+// Changing the return type of the function
 class Solution {
 public:
     long climbStairs(int n) {
