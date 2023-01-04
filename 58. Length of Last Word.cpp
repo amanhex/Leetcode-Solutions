@@ -1,6 +1,5 @@
 /*
 Given a string s consisting of words and spaces, return the length of the last word in the string.
-
 A word is a maximal substring consisting of non-space characters only.
 
 Example 1:
@@ -24,6 +23,7 @@ s consists of only English letters and spaces ' '.
 There will be at least one word in s.
 */
 
+// Starting From end of the string
 class Solution {
 public:
     int lengthOfLastWord(string s) {
