@@ -18,8 +18,6 @@ Constraints:
 haystack and needle consist of only lowercase English characters.
 */
 
-// using substr()
-
 class Solution {
 public:
     int strStr(string haystack, string needle) {
