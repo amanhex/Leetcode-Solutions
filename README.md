@@ -21,7 +21,7 @@ This repository contains solutions to Leetcode Problems (majorly DSA based quest
 
 Contributions are always welcome!
 
-You can help to optimize some codes and categorize the Questions into Easy, Medium and Hard categories as in Leetcode itself.
+You can help to optimize some codes and categorize the Questions into Easy, Medium and Hard category, as in Leetcode itself.
 
 
 ## Language Used
