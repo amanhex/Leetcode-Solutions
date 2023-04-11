@@ -31,6 +31,7 @@ s consists of lowercase English letters and stars *.
 The operation above can be performed on s.
 */
 
+// Using Stack
 class Solution {
 public:
     string removeStars(string s) {
@@ -48,5 +49,20 @@ public:
         }
         reverse(res.begin(), res.end());
         return res;
+    }
+};
+
+// Using Two Pointers
+class Solution {
+public:
+    string removeStars(string s) {
+        int i = 0, j = 0;
+        for (int i = 0; i < s.size(); i++){
+            if (s[i] == '*')
+                j--;
+            else
+                s[j++] = s[i];
+        }
+        return s.substr(0, j);
     }
 };
