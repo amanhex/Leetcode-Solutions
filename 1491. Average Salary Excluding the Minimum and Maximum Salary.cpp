@@ -25,7 +25,6 @@ public:
     double average(vector<int>& salary) {
         int minSalary = INT_MAX;
         int maxSalary = INT_MIN;
-        int count = 0;
         double sum = 0;
         for (int i = 0; i < salary.size(); i++){
             if (minSalary > salary[i])
@@ -33,9 +32,8 @@ public:
             if (maxSalary < salary[i])
                 maxSalary = salary[i];
             sum += salary[i];
-            count++;
         }
         sum -= (minSalary + maxSalary);
-        return sum / (count - 2);
+        return sum / (salary.size() - 2);
     }
 };
