@@ -27,7 +27,6 @@ Constraints:
 -105 <= nums[i] <= 105
 */
 
-
 // Two Pointers Approach and Skipping duplicates to reduce number of comparisions
 class Solution {
 public:
