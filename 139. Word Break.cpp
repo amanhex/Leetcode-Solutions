@@ -26,6 +26,7 @@ s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.
  */
 
+// Using Backtracking with memoization
 class Solution {
 public:
     bool wordBreakHelper(string& s, int start, vector<string>& wordDict, unordered_map<string, bool>& memo){
@@ -50,5 +51,26 @@ public:
     bool wordBreak(string s, vector<string>& wordDict) {
         unordered_map<string, bool> memo;
         return wordBreakHelper(s, 0, wordDict, memo);
+    }
+};
+
+// Using dp
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        int n = s.length();
+        vector<bool> dp(n + 1, false);
+        dp[0] = true;
+        
+        for (int i = 1; i <= n; i++) {
+            for (const string& word : wordDict) {
+                int len = word.length();
+                if (i >= len && dp[i - len] && s.substr(i - len, len) == word) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }      
+        return dp[n];
     }
 };
