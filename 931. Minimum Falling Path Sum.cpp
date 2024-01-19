@@ -20,27 +20,38 @@ n == matrix.length == matrix[i].length
 
 class Solution {
 public:
-    int getMinUntil(int i, int j, int m, vector<vector<int>>& matrix, vector<vector<int>>& dp){
-        if (j < 0 || j >= m)
-            return 1e9;
-        if (i == 0)
-            return matrix[0][j];
-        if (dp[i][j] != -1)
-            return dp[i][j];
-        int up = matrix[i][j] + getMinUntil(i - 1, j, m, matrix, dp);
-        int leftDiagonal = matrix[i][j] + getMinUntil(i - 1, j - 1, m, matrix, dp);
-        int rightDiagonal = matrix[i][j] + getMinUntil(i - 1, j + 1, m, matrix, dp);
-        return dp[i][j] = min(up, min(leftDiagonal, rightDiagonal));
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        if (m == 1 || n == 1) return matrix[0][0];
+        vector<vector<int>> dp(m, vector<int>(n, INT_MAX));
+        int ans = INT_MAX;
+
+        for (int i = 0; i < m; i++){
+            ans = min(ans, minFallingPathSum(matrix, 0, i, dp));
+        }
+
+        return ans;
     }
 
-    int minFallingPathSum(vector<vector<int>>& matrix) {
-        int n = matrix.size();
-        vector<vector<int>> dp(n, vector<int>(n, -1));
-        int mini = INT_MAX;
-        for (int j = 0; j < n; j++){
-            int ans = getMinUntil(n - 1, j, n, matrix, dp);
-            mini = min(mini, ans);
-        }
-        return mini;
+    int minFallingPathSum(vector<vector<int>>& matrix, int row, int col, vector<vector<int>>& dp){
+        int m = matrix.size();
+        int n = matrix[0].size();
+
+        if (dp[row][col] != INT_MAX) return dp[row][col];
+
+        if (row == m - 1)
+            return dp[row][col] = matrix[row][col];
+
+        int left = INT_MAX, right = INT_MAX;
+
+        if (col > 0)
+            left = minFallingPathSum(matrix, row + 1, col - 1, dp);
+        int straight = minFallingPathSum(matrix, row + 1, col, dp);
+        if (col < n - 1)
+            right = minFallingPathSum(matrix, row + 1, col + 1, dp);
+        
+        dp[row][col] = min(left, min(straight, right)) + matrix[row][col];
+        return dp[row][col];
     }
 };
