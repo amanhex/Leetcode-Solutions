@@ -26,6 +26,27 @@ Constraints:
 s consists of uppercase and lowercase English letters and digits.
 */
 
+// Using heap and map
+class Solution {
+public:
+    string frequencySort(string s) {
+        priority_queue<pair<int, char>> pq;
+        unordered_map<char, int> mp;
+        for (auto i : s)
+            mp[i]++;
+        for (auto i : mp)
+            pq.push(make_pair(i.second, i.first));
+        string ans = "";
+        while (!pq.empty()){
+            int freq = pq.top().first;
+            ans += string(freq, pq.top().second);
+            pq.pop();
+        }
+        return ans;
+    }
+};
+
+// Using two maps
 class Solution {
 public:
     string frequencySort(string s) {
