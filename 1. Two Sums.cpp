@@ -1,7 +1,8 @@
 /*
-Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
-You can return the answer in any order.
+Given an array of integers nums and an integer target, return indices of the two
+numbers such that they add up to target. You may assume that each input would
+have exactly one solution, and you may not use the same element twice. You can
+return the answer in any order.
 
 Example 1:
 Input: nums = [2,7,11,15], target = 9
@@ -26,17 +27,17 @@ Only one valid answer exists.
 // using hashmaps
 class Solution {
 public:
-    vector<int> twoSum(vector<int> &nums, int target) {
-        unordered_map<int, int> visited;
-        int len = nums.size();
-        for (int i = 0; i < len; ++i) {
-            int n = nums[i];
-            int complement = target - n;
-            if (visited.count(complement)) {
-                return {visited[complement], i};
-            }
-            visited[n] = i;
-        }
-        return {};
+  vector<int> twoSum(vector<int> &nums, int target) {
+    unordered_map<int, int> visited;
+    int len = nums.size();
+    for (int i = 0; i < len; ++i) {
+      int n = nums[i];
+      int complement = target - n;
+      if (visited.count(complement)) {
+        return {visited[complement], i};
+      }
+      visited[n] = i;
     }
+    return {};
+  }
 };
